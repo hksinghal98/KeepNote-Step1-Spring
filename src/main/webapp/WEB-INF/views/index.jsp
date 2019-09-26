@@ -1,4 +1,4 @@
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 
@@ -11,7 +11,65 @@
 <body>
 	<!-- Create a form which will have text boxes for Note ID, title, content and status along with a Send 
 		 button. Handle errors like empty fields -->
-
+    <form action="saveNote" method="post">
+            <table>
+                <tr>
+                    <td> ID: </td>
+                    <td>
+                        <input type="text" name="noteId" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Title: </td>
+                    <td>
+                        <input type="text" name="noteTitle" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Content: </td>
+                    <td>
+                        <input type="text" name="noteContent" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Status: </td>
+                    <td>
+                        <input type="text" name="noteStatus" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td>
+                        <input type="submit" name="Add">
+                    </td>
+                </tr>
+            </table>
+        </form>
 	<!-- display all existing notes in a tabular structure with Id, Title,Content,Status, Created Date and Action -->
+	 <table border = "1">
+           <thead>
+               <td> ID </td>
+               <td> Title </td>
+               <td> Content </td>
+               <td> Status </td>
+               <td> Created Date </td>
+               <td> Action </td>
+           </thead>
+               <c:forEach items="${list}" var="note">
+                   <tr>
+                       <td><c:out value ="${note.noteId}"/></td>
+                       <td>${note.noteTitle}</td>
+                       <td>${note.noteContent}</td>
+                       <td>${note.noteStatus}</td>
+                       <td>${note.createdAt}</td>
+                       <td>
+                           <form method="GET" action="deleteNote">
+                                 <input type="hidden" name="noteId" value="${note.noteId}" />
+                                 <input type="submit" name="delete" value="Delete"/>
+                           </form>
+                       </td>
+                   </tr>
+               </c:forEach>
+       </table>
 </body>
 </html>

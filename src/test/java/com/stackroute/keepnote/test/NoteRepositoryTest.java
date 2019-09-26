@@ -13,7 +13,7 @@ import com.stackroute.keepnote.model.Note;
 import com.stackroute.keepnote.repository.NoteRepository;
 
 public class NoteRepositoryTest {
-	
+
 	NoteRepository noteRepository;
 
 	@Before

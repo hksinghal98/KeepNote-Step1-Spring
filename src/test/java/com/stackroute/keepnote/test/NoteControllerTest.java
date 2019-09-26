@@ -24,7 +24,7 @@ import com.stackroute.keepnote.repository.NoteRepository;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/beans.xml")
 public class NoteControllerTest {
-	
+
 	private MockMvc mockMvc;
 	@Mock
 	private NoteRepository noteRepository;
